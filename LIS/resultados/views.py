@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+def listar_resultados(request):
+    return HttpResponse("Listado de resultados OK")
+
+def crear_resultado(request):
+    return HttpResponse("Crear resultado OK")
