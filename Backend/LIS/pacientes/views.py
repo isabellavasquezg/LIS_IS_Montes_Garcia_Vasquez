@@ -1,7 +1,12 @@
-from django.http import HttpResponse
+from django.http import JsonResponse
+from django.views import View
+from .models import Paciente
+import json
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
-def listar_pacientes(request):
-    return HttpResponse("Página de listado de pacientes funcionando correctamente")
-
-def crear_paciente(request):
-    return HttpResponse("Página para crear paciente funcionando correctamente")
+class PacientesView(View): 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    

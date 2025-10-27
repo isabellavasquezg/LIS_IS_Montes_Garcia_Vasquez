@@ -9,6 +9,3 @@ class Resultado(models.Model):
     colesterol_hdl = models.FloatField()
     colesterol_ldl = models.FloatField()
     trigliceridos = models.FloatField()
-
-    def __str__(self):
-        return f"Resultado de {self.paciente.nombre}"

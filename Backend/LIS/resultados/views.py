@@ -1,7 +1,12 @@
-from django.http import HttpResponse
+from django.http import JsonResponse
+from django.views import View
+from .models import Resultado
+import json
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
-def listar_resultados(request):
-    return HttpResponse("Listado de resultados OK")
+class ResultadosView(View): 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
-def crear_resultado(request):
-    return HttpResponse("Crear resultado OK")

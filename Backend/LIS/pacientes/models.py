@@ -7,6 +7,3 @@ class Paciente(models.Model):
     codigo_ingreso = models.AutoField(primary_key=True)
     direccion = models.CharField(max_length=150)
     telefono = models.CharField(max_length=20)
-
-    def __str__(self):
-        return f"{self.nombre} {self.apellidos}"
