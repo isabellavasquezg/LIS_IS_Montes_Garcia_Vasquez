@@ -1,12 +1,112 @@
-from django.http import JsonResponse
 from django.views import View
-from .models import Resultado
-import json
-from django.utils.decorators import method_decorator
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+import json
 
-class ResultadosView(View): 
-    @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+from .models import Resultado
+from pacientes.models import Paciente
+from laboratoristas.models import Laboratorista
 
+
+@method_decorator(csrf_exempt, name='dispatch')
+class ResultadosView(View):
+
+    def get(self, request, id_resultado=None):
+        if id_resultado:
+            try:
+                resultado = Resultado.objects.get(id=id_resultado)
+                data = {
+                    "id": resultado.id,
+                    "paciente": resultado.paciente.codigo_ingreso if resultado.paciente else None,
+                    "laboratorista": resultado.laboratorista.codigo_interno if resultado.laboratorista else None,
+                    "colesterol_total": resultado.colesterol_total,
+                    "colesterol_hdl": resultado.colesterol_hdl,
+                    "colesterol_ldl": resultado.colesterol_ldl,
+                    "trigliceridos": resultado.trigliceridos
+                }
+                return JsonResponse(data, status=200)
+            except Resultado.DoesNotExist:
+                return JsonResponse({"error": "Resultado no encontrado"}, status=404)
+        else:
+            resultados = list(
+                Resultado.objects.values(
+                    "id",
+                    "paciente__codigo_ingreso",
+                    "laboratorista__codigo_interno",
+                    "colesterol_total",
+                    "colesterol_hdl",
+                    "colesterol_ldl",
+                    "trigliceridos"
+                )
+            )
+            return JsonResponse({"resultados": resultados}, status=200)
+
+    def post(self, request):
+        try:
+            data = json.loads(request.body.decode('utf-8'))
+
+            # Buscar paciente y laboratorista
+            paciente = Paciente.objects.get(codigo_ingreso=data["codigo_ingreso"])
+            laboratorista = Laboratorista.objects.get(codigo_interno=data["codigo_interno"])
+
+            resultado = Resultado.objects.create(
+                paciente=paciente,
+                laboratorista=laboratorista,
+                colesterol_total=data["colesterol_total"],
+                colesterol_hdl=data["colesterol_hdl"],
+                colesterol_ldl=data["colesterol_ldl"],
+                trigliceridos=data["trigliceridos"]
+            )
+
+            return JsonResponse({
+                "message": "Resultado creado correctamente",
+                "id": resultado.id
+            }, status=201)
+
+        except Paciente.DoesNotExist:
+            return JsonResponse({"error": "El paciente no existe"}, status=404)
+        except Laboratorista.DoesNotExist:
+            return JsonResponse({"error": "El laboratorista no existe"}, status=404)
+        except KeyError as e:
+            return JsonResponse({"error": f"Campo faltante: {str(e)}"}, status=400)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+
+    def put(self, request, id_resultado):
+        try:
+            data = json.loads(request.body.decode('utf-8'))
+            resultado = Resultado.objects.get(id=id_resultado)
+
+            # Actualizar campos
+            if "codigo_ingreso" in data:
+                resultado.paciente = Paciente.objects.get(codigo_ingreso=data["codigo_ingreso"])
+            if "codigo_interno" in data:
+                resultado.laboratorista = Laboratorista.objects.get(codigo_interno=data["codigo_interno"])
+
+            resultado.colesterol_total = data.get("colesterol_total", resultado.colesterol_total)
+            resultado.colesterol_hdl = data.get("colesterol_hdl", resultado.colesterol_hdl)
+            resultado.colesterol_ldl = data.get("colesterol_ldl", resultado.colesterol_ldl)
+            resultado.trigliceridos = data.get("trigliceridos", resultado.trigliceridos)
+
+            resultado.save()
+            return JsonResponse({"message": "Resultado actualizado correctamente"}, status=200)
+
+        except Resultado.DoesNotExist:
+            return JsonResponse({"error": "Resultado no encontrado"}, status=404)
+        except Paciente.DoesNotExist:
+            return JsonResponse({"error": "Paciente no encontrado"}, status=404)
+        except Laboratorista.DoesNotExist:
+            return JsonResponse({"error": "Laboratorista no encontrado"}, status=404)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+
+    def delete(self, request, id_resultado):
+        try:
+            resultado = Resultado.objects.get(id=id_resultado)
+            resultado.delete()
+            return JsonResponse({"message": "Resultado eliminado correctamente"}, status=200)
+        except Resultado.DoesNotExist:
+            return JsonResponse({"error": "Resultado no encontrado"}, status=404)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
