@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 27, 2025 at 07:45 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 30-10-2025 a las 04:33:45
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `lis`
+-- Base de datos: `lis`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_group`
+-- Estructura de tabla para la tabla `auth_group`
 --
 
 CREATE TABLE `auth_group` (
@@ -35,7 +35,7 @@ CREATE TABLE `auth_group` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_group_permissions`
+-- Estructura de tabla para la tabla `auth_group_permissions`
 --
 
 CREATE TABLE `auth_group_permissions` (
@@ -47,7 +47,7 @@ CREATE TABLE `auth_group_permissions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_permission`
+-- Estructura de tabla para la tabla `auth_permission`
 --
 
 CREATE TABLE `auth_permission` (
@@ -58,7 +58,7 @@ CREATE TABLE `auth_permission` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `auth_permission`
+-- Volcado de datos para la tabla `auth_permission`
 --
 
 INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
@@ -97,12 +97,16 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (33, 'Can add laboratorista', 9, 'add_laboratorista'),
 (34, 'Can change laboratorista', 9, 'change_laboratorista'),
 (35, 'Can delete laboratorista', 9, 'delete_laboratorista'),
-(36, 'Can view laboratorista', 9, 'view_laboratorista');
+(36, 'Can view laboratorista', 9, 'view_laboratorista'),
+(37, 'Can add usuario', 10, 'add_usuario'),
+(38, 'Can change usuario', 10, 'change_usuario'),
+(39, 'Can delete usuario', 10, 'delete_usuario'),
+(40, 'Can view usuario', 10, 'view_usuario');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_user`
+-- Estructura de tabla para la tabla `auth_user`
 --
 
 CREATE TABLE `auth_user` (
@@ -122,7 +126,7 @@ CREATE TABLE `auth_user` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_user_groups`
+-- Estructura de tabla para la tabla `auth_user_groups`
 --
 
 CREATE TABLE `auth_user_groups` (
@@ -134,7 +138,7 @@ CREATE TABLE `auth_user_groups` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_user_user_permissions`
+-- Estructura de tabla para la tabla `auth_user_user_permissions`
 --
 
 CREATE TABLE `auth_user_user_permissions` (
@@ -146,7 +150,7 @@ CREATE TABLE `auth_user_user_permissions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `django_admin_log`
+-- Estructura de tabla para la tabla `django_admin_log`
 --
 
 CREATE TABLE `django_admin_log` (
@@ -163,7 +167,7 @@ CREATE TABLE `django_admin_log` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `django_content_type`
+-- Estructura de tabla para la tabla `django_content_type`
 --
 
 CREATE TABLE `django_content_type` (
@@ -173,7 +177,7 @@ CREATE TABLE `django_content_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `django_content_type`
+-- Volcado de datos para la tabla `django_content_type`
 --
 
 INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
@@ -185,12 +189,13 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (9, 'laboratoristas', 'laboratorista'),
 (7, 'pacientes', 'paciente'),
 (8, 'resultados', 'resultado'),
-(6, 'sessions', 'session');
+(6, 'sessions', 'session'),
+(10, 'usuarios', 'usuario');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `django_migrations`
+-- Estructura de tabla para la tabla `django_migrations`
 --
 
 CREATE TABLE `django_migrations` (
@@ -201,7 +206,7 @@ CREATE TABLE `django_migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `django_migrations`
+-- Volcado de datos para la tabla `django_migrations`
 --
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
@@ -225,12 +230,14 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (18, 'laboratoristas', '0001_initial', '2025-10-27 05:27:12.509678'),
 (19, 'pacientes', '0001_initial', '2025-10-27 05:27:12.519765'),
 (20, 'resultados', '0001_initial', '2025-10-27 05:27:12.570450'),
-(21, 'sessions', '0001_initial', '2025-10-27 05:27:12.606118');
+(21, 'sessions', '0001_initial', '2025-10-27 05:27:12.606118'),
+(22, 'pacientes', '0002_alter_paciente_direccion', '2025-10-30 03:18:44.746105'),
+(23, 'usuarios', '0001_initial', '2025-10-30 03:28:46.325673');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `django_session`
+-- Estructura de tabla para la tabla `django_session`
 --
 
 CREATE TABLE `django_session` (
@@ -242,7 +249,7 @@ CREATE TABLE `django_session` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `laboratoristas_laboratorista`
+-- Estructura de tabla para la tabla `laboratoristas_laboratorista`
 --
 
 CREATE TABLE `laboratoristas_laboratorista` (
@@ -253,11 +260,11 @@ CREATE TABLE `laboratoristas_laboratorista` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `laboratoristas_laboratorista`
+-- Volcado de datos para la tabla `laboratoristas_laboratorista`
 --
 
 INSERT INTO `laboratoristas_laboratorista` (`codigo_interno`, `nombre`, `titulo`, `telefono`) VALUES
-('LAB021', 'Julián Montoya', 'Técnico en Patología', '3001234567'),
+('LAB021', 'Julián Areiza', 'Técnico en Patología', '3001234567'),
 ('LAB022', 'Valeria Cárdenas', 'Bacterióloga Clínica', '3012345678'),
 ('LAB023', 'Sebastián Restrepo', 'Químico Analista', '3023456789'),
 ('LAB024', 'Camila Ortiz', 'Especialista en Inmunología', '3034567890'),
@@ -281,7 +288,7 @@ INSERT INTO `laboratoristas_laboratorista` (`codigo_interno`, `nombre`, `titulo`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pacientes_paciente`
+-- Estructura de tabla para la tabla `pacientes_paciente`
 --
 
 CREATE TABLE `pacientes_paciente` (
@@ -289,17 +296,15 @@ CREATE TABLE `pacientes_paciente` (
   `nombre` varchar(100) NOT NULL,
   `apellidos` varchar(100) NOT NULL,
   `codigo_ingreso` int(11) NOT NULL,
-  `direccion` varchar(150) NOT NULL,
+  `direccion` varchar(200) NOT NULL,
   `telefono` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `pacientes_paciente`
+-- Volcado de datos para la tabla `pacientes_paciente`
 --
 
 INSERT INTO `pacientes_paciente` (`documento`, `nombre`, `apellidos`, `codigo_ingreso`, `direccion`, `telefono`) VALUES
-('1000123456', 'Juan', 'Pérez García', 1, 'Calle 10 # 5-20', '3101234567'),
-('2000234567', 'Ana', 'López Martínez', 2, 'Carrera 7 # 8-35', '3202345678'),
 ('3000345678', 'Carlos', 'Rodríguez Sánchez', 3, 'Avenida Principal 12-40', '3003456789'),
 ('4000456789', 'María', 'Gómez Torres', 4, 'Transversal 3A # 1-15', '3014567890'),
 ('5000567890', 'Pedro', 'Díaz Castro', 5, 'Vía Central Km 5', '3115678901'),
@@ -322,7 +327,7 @@ INSERT INTO `pacientes_paciente` (`documento`, `nombre`, `apellidos`, `codigo_in
 -- --------------------------------------------------------
 
 --
--- Table structure for table `resultados_resultado`
+-- Estructura de tabla para la tabla `resultados_resultado`
 --
 
 CREATE TABLE `resultados_resultado` (
@@ -336,44 +341,61 @@ CREATE TABLE `resultados_resultado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `resultados_resultado`
+-- Volcado de datos para la tabla `resultados_resultado`
 --
 
 INSERT INTO `resultados_resultado` (`id`, `colesterol_total`, `colesterol_hdl`, `colesterol_ldl`, `trigliceridos`, `laboratorista_id`, `paciente_id`) VALUES
-(1, 185, 52.5, 115, 145, 'LAB021', 1),
-(2, 205.5, 41, 138.2, 188.5, 'LAB022', 2),
-(3, 160, 68, 85, 105, 'LAB023', 3),
 (4, 245.8, 36.5, 178.9, 275.2, 'LAB024', 4),
 (5, 192.1, 49, 122.5, 160, 'LAB025', 5),
-(6, 172.3, 51.5, 102, 135.1, 'LAB021', 6),
+(6, 172.3, 51.5, 102, 135.1, NULL, 6),
 (7, 218, 43.5, 142.5, 202.9, 'LAB022', 7),
 (8, 158.5, 71, 78, 90.5, 'LAB023', 8),
 (9, 238.1, 39.5, 162, 255, 'LAB024', 9),
 (10, 187.5, 53, 117.5, 152.5, 'LAB025', 10),
-(11, 200, 45.5, 128, 175, 'LAB021', 1),
-(12, 168.2, 56, 99, 115, 'LAB022', 2),
 (13, 232, 40, 153.5, 240, 'LAB023', 3),
 (14, 195, 47.5, 120, 160.5, 'LAB024', 4),
 (15, 178.5, 62, 100, 128, 'LAB025', 5),
-(16, 212, 44, 135.5, 198, 'LAB021', 6),
+(16, 212, 44, 135.5, 198, NULL, 6),
 (17, 152.5, 74, 72.5, 80, 'LAB022', 7),
 (18, 228, 38, 152, 220, 'LAB023', 8),
 (19, 191.5, 54, 114.5, 147, 'LAB024', 9),
-(20, 208, 42, 132.5, 187, 'LAB025', 10);
+(20, 208, 42, 132.5, 187, 'LAB025', 10),
+(22, 180, 55, 100, 120, 'LAB025', 4);
+
+-- --------------------------------------------------------
 
 --
--- Indexes for dumped tables
+-- Estructura de tabla para la tabla `usuarios_usuario`
+--
+
+CREATE TABLE `usuarios_usuario` (
+  `id` bigint(20) NOT NULL,
+  `usuario` varchar(150) NOT NULL,
+  `contrasena` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios_usuario`
+--
+
+INSERT INTO `usuarios_usuario` (`id`, `usuario`, `contrasena`) VALUES
+(1, 'kevin.garciaj', '7731cb1f1f1ea27a86f9c0b0a75a6f4dbdf55686'),
+(2, 'isabella.vasquezg', 'feaf742c96608939ee992013061039ab12855195'),
+(3, 'dairon.montes', 'f247c4cf275f973f9c785444f67bf7d0eafb68f9');
+
+--
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `auth_group`
+-- Indices de la tabla `auth_group`
 --
 ALTER TABLE `auth_group`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indexes for table `auth_group_permissions`
+-- Indices de la tabla `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
   ADD PRIMARY KEY (`id`),
@@ -381,21 +403,21 @@ ALTER TABLE `auth_group_permissions`
   ADD KEY `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` (`permission_id`);
 
 --
--- Indexes for table `auth_permission`
+-- Indices de la tabla `auth_permission`
 --
 ALTER TABLE `auth_permission`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`);
 
 --
--- Indexes for table `auth_user`
+-- Indices de la tabla `auth_user`
 --
 ALTER TABLE `auth_user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indexes for table `auth_user_groups`
+-- Indices de la tabla `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
   ADD PRIMARY KEY (`id`),
@@ -403,7 +425,7 @@ ALTER TABLE `auth_user_groups`
   ADD KEY `auth_user_groups_group_id_97559544_fk_auth_group_id` (`group_id`);
 
 --
--- Indexes for table `auth_user_user_permissions`
+-- Indices de la tabla `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
   ADD PRIMARY KEY (`id`),
@@ -411,7 +433,7 @@ ALTER TABLE `auth_user_user_permissions`
   ADD KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`);
 
 --
--- Indexes for table `django_admin_log`
+-- Indices de la tabla `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
   ADD PRIMARY KEY (`id`),
@@ -419,40 +441,40 @@ ALTER TABLE `django_admin_log`
   ADD KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`);
 
 --
--- Indexes for table `django_content_type`
+-- Indices de la tabla `django_content_type`
 --
 ALTER TABLE `django_content_type`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`);
 
 --
--- Indexes for table `django_migrations`
+-- Indices de la tabla `django_migrations`
 --
 ALTER TABLE `django_migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `django_session`
+-- Indices de la tabla `django_session`
 --
 ALTER TABLE `django_session`
   ADD PRIMARY KEY (`session_key`),
   ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
 
 --
--- Indexes for table `laboratoristas_laboratorista`
+-- Indices de la tabla `laboratoristas_laboratorista`
 --
 ALTER TABLE `laboratoristas_laboratorista`
   ADD PRIMARY KEY (`codigo_interno`);
 
 --
--- Indexes for table `pacientes_paciente`
+-- Indices de la tabla `pacientes_paciente`
 --
 ALTER TABLE `pacientes_paciente`
   ADD PRIMARY KEY (`codigo_ingreso`),
   ADD UNIQUE KEY `documento` (`documento`);
 
 --
--- Indexes for table `resultados_resultado`
+-- Indices de la tabla `resultados_resultado`
 --
 ALTER TABLE `resultados_resultado`
   ADD PRIMARY KEY (`id`),
@@ -460,115 +482,128 @@ ALTER TABLE `resultados_resultado`
   ADD KEY `resultados_resultado_paciente_id_242d39d7_fk_pacientes` (`paciente_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indices de la tabla `usuarios_usuario`
+--
+ALTER TABLE `usuarios_usuario`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `usuario` (`usuario`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `auth_group`
+-- AUTO_INCREMENT de la tabla `auth_group`
 --
 ALTER TABLE `auth_group`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `auth_group_permissions`
+-- AUTO_INCREMENT de la tabla `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `auth_permission`
+-- AUTO_INCREMENT de la tabla `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT for table `auth_user`
+-- AUTO_INCREMENT de la tabla `auth_user`
 --
 ALTER TABLE `auth_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `auth_user_groups`
+-- AUTO_INCREMENT de la tabla `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `auth_user_user_permissions`
+-- AUTO_INCREMENT de la tabla `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `django_admin_log`
+-- AUTO_INCREMENT de la tabla `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `django_content_type`
+-- AUTO_INCREMENT de la tabla `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `django_migrations`
+-- AUTO_INCREMENT de la tabla `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `pacientes_paciente`
+-- AUTO_INCREMENT de la tabla `pacientes_paciente`
 --
 ALTER TABLE `pacientes_paciente`
-  MODIFY `codigo_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `codigo_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `resultados_resultado`
+-- AUTO_INCREMENT de la tabla `resultados_resultado`
 --
 ALTER TABLE `resultados_resultado`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT de la tabla `usuarios_usuario`
+--
+ALTER TABLE `usuarios_usuario`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `auth_group_permissions`
+-- Filtros para la tabla `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
   ADD CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   ADD CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`);
 
 --
--- Constraints for table `auth_permission`
+-- Filtros para la tabla `auth_permission`
 --
 ALTER TABLE `auth_permission`
   ADD CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`);
 
 --
--- Constraints for table `auth_user_groups`
+-- Filtros para la tabla `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
   ADD CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
   ADD CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Constraints for table `auth_user_user_permissions`
+-- Filtros para la tabla `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
   ADD CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   ADD CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Constraints for table `django_admin_log`
+-- Filtros para la tabla `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
   ADD CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   ADD CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Constraints for table `resultados_resultado`
+-- Filtros para la tabla `resultados_resultado`
 --
 ALTER TABLE `resultados_resultado`
   ADD CONSTRAINT `resultados_resultado_laboratorista_id_d3fb85f0_fk_laborator` FOREIGN KEY (`laboratorista_id`) REFERENCES `laboratoristas_laboratorista` (`codigo_interno`),
