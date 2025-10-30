@@ -1,6 +1,8 @@
 from django.db import models
 
-# Create your models here.
-class user(models.Model):
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
+class Usuario(models.Model):
+    usuario = models.CharField(max_length=150, unique=True)  
+    contrasena = models.CharField(max_length=64) 
+
+    def __str__(self):
+        return self.usuario

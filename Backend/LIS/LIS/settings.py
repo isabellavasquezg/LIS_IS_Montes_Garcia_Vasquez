@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'pacientes',
     'resultados',
     'laboratoristas',
+    'usuarios',
 ]
 
 MIDDLEWARE = [
