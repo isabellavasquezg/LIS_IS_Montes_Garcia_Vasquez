@@ -90,7 +90,7 @@ export default {
         display: flex;
     }
     .bacground-login-color {
-        background-color:#00506c;
+        background-color:#00496e;
         width: 100%;
         height: 100vh;
         opacity: 0.9;
@@ -139,37 +139,36 @@ export default {
         color: #ffffff;
     }
     .input-container {
-    box-sizing: border-box;
-    margin-top: 60px;
-    width: 60%; 
+        box-sizing: border-box;
+        margin-top: 60px;
+        width: 60%; 
     }
     .password-wrapper {
-    position: relative;
-    width: 60%; 
-    margin: 20px 40px; 
+        position: relative;
+        width: 60%; 
+        margin: 20px 40px; 
     }
     .password-wrapper .input-login {
-    margin: 0;
-    width: 100%; 
-    padding-right: 10px;
+        margin: 0;
+        width: 100%; 
+        padding-right: 10px;
     }
     .password-toggle {
-    position: absolute;
-    top: 50%; 
-    right: 5px; 
-    transform: translateY(-50%);
-    
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    height: 30px;
-    width: 30px;
+        position: absolute;
+        top: 50%; 
+        right: 5px; 
+        transform: translateY(-30%) translateX(30px);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        height: 30px;
+        width: 30px;
     }
     .eye-icon {
-    width: 100%;
-    height: 100%;
-    filter: invert(100%); 
+        width: 100%;
+        height: 100%;
+        filter: invert(100%); 
     }
     .input-login::placeholder{
         color: #ffffff84; 
@@ -180,9 +179,9 @@ export default {
         color: #ffffff;
     }
     .buttons-login {
-    display: flex;
-    margin-left: 40px; 
-    margin-top: 20px; 
+        display: flex;
+        margin-left: 40px; 
+        margin-top: 20px; 
     }
     .button-login{
         padding:0;
