@@ -1,4 +1,47 @@
-<script setup>
+<script>
+import axios from 'axios';
+export default {
+  name:'usuarioLogin',
+    data() {
+        return {
+        username: '',
+        password: '',
+        passwordVisible: false
+        };
+    },
+    methods:{
+        estadoPassword(){
+            this.passwordVisible = !this.passwordVisible;
+        },
+        LoginUser(){
+            if (!this.username || !this.password) {
+            }else{
+                const credentials = {
+                usuario: this.username, 
+                contrasena: this.password 
+                };
+                this.password = '';
+                this.username = '';
+                axios.post('http://127.0.0.1:8000/usuarios/', credentials)
+                .then(response => {
+                    const data = response.data; 
+                    this.$router.push('/Home');
+                })
+                .catch(error => {
+                    if (error.response) {
+                        const errorMessage = error.response.data.error || "Credenciales inválidas.";
+                        alert('Error de inicio de sesión: ' + errorMessage);
+                        
+                        console.error("Detalles del error HTTP:", error.response);
+                    } else {
+                        alert('No se pudo conectar con el servidor. Verifica la URL.');
+                        console.error("Error de conexión/red:", error);
+                    }
+                });  
+            }
+        }   
+    }
+};
 
 </script>
 
@@ -10,11 +53,18 @@
         </div>
         <form class="form-login"> 
             <div class="input-container">
-                <input class="input-login" type="text" placeholder="Username" />
-                <input class="input-login" type="password" placeholder="Password" />
+                <input class="input-login" required type="text" placeholder="Username" v-model="username"/>
+                <div class="password-wrapper">
+                    <!-- Input de Contraseña: el tipo cambia según el estado -->
+                    <input class="input-login" required :type="passwordVisible ? 'text' : 'password'" placeholder="Password" v-model="password"/> 
+                    <button type="button" class="password-toggle" @click="estadoPassword">
+                        <img :src="passwordVisible ?  '../../public/images/eye_closed.png' : '../../public/images/eye_open.png'"alt="Toggle Password Visibility"class="eye-icon"/>
+                    </button>
+                </div>
+
                 <div class="buttons-login">
                     <button  class="button-login" type="reset">DELETE</button>
-                    <button  class="button-login" type="submit">LOGIN</button>
+                    <button  class="button-login" type="button" @click="LoginUser">LOGIN</button>
                 </div>
             </div>
         </form>
@@ -84,10 +134,38 @@
         font-size: 16px;
         color: #ffffff;
     }
-    .input-container{
-        box-sizing: border-box;
-        margin-top: 60px;
-        width: 50%;
+    .input-container {
+    box-sizing: border-box;
+    margin-top: 60px;
+    width: 60%; 
+    }
+    .password-wrapper {
+    position: relative;
+    width: 60%; 
+    margin: 20px 40px; 
+    }
+    .password-wrapper .input-login {
+    margin: 0;
+    width: 100%; 
+    padding-right: 10px;
+    }
+    .password-toggle {
+    position: absolute;
+    top: 50%; 
+    right: 5px; 
+    transform: translateY(-50%);
+    
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    height: 30px;
+    width: 30px;
+    }
+    .eye-icon {
+    width: 100%;
+    height: 100%;
+    filter: invert(100%); 
     }
     .input-login::placeholder{
         color: #ffffff84; 
@@ -97,10 +175,10 @@
         background-color: #678d9d;
         color: #ffffff;
     }
-    .buttons-login{
-        display: flex;
-        margin-left: 40px;  
-        height: 40px;
+    .buttons-login {
+    display: flex;
+    margin-left: 40px; 
+    margin-top: 20px; 
     }
     .button-login{
         padding:0;
