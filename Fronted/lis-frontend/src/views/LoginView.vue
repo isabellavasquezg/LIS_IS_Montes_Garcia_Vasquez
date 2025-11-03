@@ -196,6 +196,7 @@ export default {
     .button-login:hover{
         background-color: #ffffff;
         color: #00506c;
+        cursor: pointer;
     }
     .button-login:active{
         transform: scale(0.98);
