@@ -13,6 +13,10 @@ export default {
         estadoPassword(){
             this.passwordVisible = !this.passwordVisible;
         },
+        clearInputs(){
+            this.username = '';
+            this.password = '';
+        },
         LoginUser(){
             if (!this.username || !this.password) {
             }else{
@@ -63,7 +67,7 @@ export default {
                 </div>
 
                 <div class="buttons-login">
-                    <button  class="button-login" type="reset">DELETE</button>
+                    <button  class="button-login" type="button" @click="clearInputs">DELETE</button>
                     <button  class="button-login" type="button" @click="LoginUser">LOGIN</button>
                 </div>
             </div>
