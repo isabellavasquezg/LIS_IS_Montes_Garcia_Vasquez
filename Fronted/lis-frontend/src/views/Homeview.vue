@@ -26,33 +26,273 @@ export default {
             <button class="boton-busqueda-menu" type="button">buscar</button>
         </form>
         <button class="boton-anadir-menu" type="button">+</button>
-        <table class="tabla-menu-sujetos">
-            <thead>
-                <tr>
-                    <th>sds</th>
-                    <th>sds</th>
-                    <th>dsd</th>
-                    <th>sds</th>
-                    <th>sdsd</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>sds</td>
-                    <td>sd</td>
-                    <td>sds</td>
-                    <td>sd</td>
-                    <td>dss</td>
-                </tr>
-                <tr>
-                    <td>sds</td>
-                    <td>sd</td>
-                    <td>sds</td>
-                    <td>sd</td>
-                    <td>dss</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="tabla-contenedor-scroll">
+            <table class="tabla-menu-sujetos">
+                <thead>
+                    <tr>
+                        <th>sds</th>
+                        <th>sds</th>
+                        <th>dsd</th>
+                        <th>sds</th>
+                        <th>sdsd</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                    <tr>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>sds</td>
+                        <td>sd</td>
+                        <td>dss</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="sidebar-container">
             <div class="imagen-logo-menu">
             </div>
@@ -210,13 +450,113 @@ export default {
     .boton-anadir-menu:active{
         transform: scale(0.98);
     }
-    .tabla-menu-sujetos{
+    .tabla-contenedor-scroll {
+            /* Color del manejador | Color del fondo (pista) */
+        scrollbar-color: #00215a #f1f1f1; 
+        
+        /* Opcional: para hacer el scroll más delgado en Firefox */
+        scrollbar-width: thin;
         grid-column-start: 4;
         grid-column-end: 11;
         grid-row-start: 6;
         grid-row-end: 16;
+        /* Define la altura máxima que quieres que tenga el área de datos */
+        max-height: 400px; /* Por ejemplo, 400 píxeles */
+        
+        /* ¡Esto es lo crucial! Muestra la barra de desplazamiento vertical 
+        solo cuando el contenido exceda la altura máxima. */
+        overflow-y: auto; 
+        
+        /* Asegura que el contenedor ocupe el 100% del ancho para centrar la tabla */
+        width: 100%;
     }
-    th{
+    .tabla-menu-sujetos {
+
+        /* Esencial para que border-radius y box-shadow funcionen en la tabla/celdas */
+        border-collapse: separate;
+        /* Elimina el espacio entre celdas por defecto */
+        border-spacing: 0 10px; /* 0 horizontal, 10px vertical para separación de filas */
+        width: 100%;
+        
+        /* Fuente y color de fondo general (opcional) */
+        font-family: sans-serif;
+    }
+
+    /* --- Estilos de la cabecera (Header) --- */
+    .tabla-menu-sujetos thead th {
+        background-color: transparent; /* Fondo transparente para la cabecera */
+        color: #444; /* Color del texto de la cabecera */
+        padding: 10px 15px;
         text-align: left;
+        border: none; /* Asegúrate de que no haya bordes indeseados */
+    }
+
+    /* Redondear las esquinas de los extremos del encabezado */
+    .tabla-menu-sujetos thead th:first-child {
+        border-top-left-radius: 10px;
+    }
+
+    .tabla-menu-sujetos thead th:last-child {
+        border-top-right-radius: 10px;
+    }
+
+    /* Ocultar la última celda del encabezado que contiene los 3 puntos (si es una columna) */
+    .tabla-menu-sujetos thead th:last-child {
+        visibility: hidden; /* Oculta el encabezado de la última columna */
+        width: 30px; /* Ajusta el ancho para mantener el espacio de los 3 puntos en la fila de datos */
+    }
+
+
+    /* --- Estilos de las filas de datos (Body Rows) --- */
+    .tabla-menu-sujetos tbody tr {
+        display: table-row; /* Mantiene el comportamiento de fila */
+        /* Agrega un sombreado (shadow) para dar el efecto de "bloque" y el borde ligero */
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+        background-color: white; /* Fondo blanco para las filas */
+        border-radius: 10px; /* Redondea toda la fila */
+        overflow: hidden; /* Importante para que el redondeado se aplique bien */
+        height: 60px; /* Altura fija para que la fila vacía se vea del tamaño deseado */
+    }
+
+    /* Eliminar el margen inferior de la última fila */
+    .tabla-menu-sujetos tbody tr:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Estilos de las celdas de datos */
+    .tabla-menu-sujetos tbody td {
+        padding: 10px 15px;
+        border: none; /* No queremos bordes internos */
+        /* Para simular la línea de la imagen, podrías usar un borde a la derecha */
+        border-right: 1px solid #eee; 
+    }
+
+    /* Quitar el borde derecho de la última celda antes de los 3 puntos */
+    .tabla-menu-sujetos tbody tr td:nth-last-child(2) {
+        border-right: none; 
+    }
+
+    /* Estilos para la celda de los 3 puntos (última celda) */
+    .tabla-menu-sujetos tbody tr td:last-child {
+        /* Es importante que no tenga border-right si no tiene contenido visual */
+        border-right: none;
+        text-align: center;
+        width: 30px; /* Mismo ancho que la columna oculta del thead */
+        position: relative;
+        /* Crear el botón de 3 puntos */
+    }
+
+    /* --- Redondeo en las esquinas de las filas --- */
+
+    /* Esquinas superiores izquierdas y derechas de cada fila */
+    .tabla-menu-sujetos tbody tr td:first-child {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    /* Esquinas inferiores izquierdas y derechas de cada fila */
+    .tabla-menu-sujetos tbody tr td:last-child {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 </style>
