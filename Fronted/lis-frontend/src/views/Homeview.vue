@@ -23,8 +23,36 @@ export default {
         <h2 class="titulo-menu">PACIENTES</h2>
         <form class="menu-busqueda-codigo">
             <input class="input-menu-busqueda" type="text" placeholder="Codigo Paciente"></input>
-            <button class="boton-busqueda-menu" type="button"></button>
+            <button class="boton-busqueda-menu" type="button">buscar</button>
         </form>
+        <button class="boton-anadir-menu" type="button">+</button>
+        <table class="tabla-menu-sujetos">
+            <thead>
+                <tr>
+                    <th>sds</th>
+                    <th>sds</th>
+                    <th>dsd</th>
+                    <th>sds</th>
+                    <th>sdsd</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>sds</td>
+                    <td>sd</td>
+                    <td>sds</td>
+                    <td>sd</td>
+                    <td>dss</td>
+                </tr>
+                <tr>
+                    <td>sds</td>
+                    <td>sd</td>
+                    <td>sds</td>
+                    <td>sd</td>
+                    <td>dss</td>
+                </tr>
+            </tbody>
+        </table>
         <div class="sidebar-container">
             <div class="imagen-logo-menu">
             </div>
@@ -148,10 +176,47 @@ export default {
     }
     .boton-busqueda-menu{
         display:flex;
+        padding: 0 10px;
         box-sizing: border-box;
-        height: 100%;
-        color:#00215a;
-        background-image: url("../../public/images/");
+        height: 90%;
+        border-radius: 15px;
+        color:#0f264db3;
         border: none;
+        background-color: transparent;
+        align-items: center;
+    }
+    .boton-busqueda-menu:hover{
+        color:#08317ce5;
+        background-color: #ffffff;
+        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.3);
+    }
+    .boton-busqueda-menu:active{
+        transform: scale(0.98);
+    }
+    .boton-anadir-menu{
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 4;
+        grid-row-end: 5;
+        box-sizing: border-box;
+        margin: 5px 70px 5px 0;
+        border-radius: 10px;
+        border:none;
+        background-color: #71cfff;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .boton-anadir-menu:active{
+        transform: scale(0.98);
+    }
+    .tabla-menu-sujetos{
+        grid-column-start: 4;
+        grid-column-end: 11;
+        grid-row-start: 6;
+        grid-row-end: 16;
+    }
+    th{
+        text-align: left;
     }
 </style>
