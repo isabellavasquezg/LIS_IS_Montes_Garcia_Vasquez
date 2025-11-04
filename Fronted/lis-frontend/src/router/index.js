@@ -19,6 +19,12 @@ const router=createRouter({
             name: 'Laboratoristas',
             component: () => import('../views/LaboratoristasView.vue')
         }
+        ,
+        {
+            path: '/resultados',
+            name: 'Resultados',
+            component: () => import('../views/ResultadosView.vue')
+        }
   ]
 });
 export default router;
