@@ -5,12 +5,14 @@ const router=createRouter({
         {
             path:'/',
             name:'Login',
-            component:()=>import('../views/LoginView.vue')
+            component:()=>import('../views/LoginView.vue'),
+            props: true
         },
         {
             path:'/Home',
             name:'Home',
-            component:()=>import('../views/Homeview.vue')
+            component:()=>import('../views/Homeview.vue'),
+            props: true
         }
     ]
 });

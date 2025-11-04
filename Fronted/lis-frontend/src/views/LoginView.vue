@@ -4,6 +4,7 @@ export default {
   name:'usuarioLogin',
     data() {
         return {
+        user:'',
         username: '',
         password: '',
         passwordVisible: false
@@ -24,12 +25,17 @@ export default {
                 usuario: this.username, 
                 contrasena: this.password 
                 };
-                this.password = '';
-                this.username = '';
                 axios.post('http://127.0.0.1:8000/usuarios/', credentials)
                 .then(response => {
+                    const valornombre=this.username;
+                    console.log(valornombre)
                     const data = response.data; 
-                    this.$router.push('/Home');
+                    this.$router.push({ 
+                        path: '/Home', 
+                        query: { user: valornombre }
+                    });
+                    this.password = '';
+                    this.username = '';
                 })
                 .catch(error => {
                     if (error.response) {
@@ -90,7 +96,7 @@ export default {
         display: flex;
     }
     .bacground-login-color {
-        background-color:#00496e;
+        background-color:#00215a;
         width: 100%;
         height: 100vh;
         opacity: 0.9;
@@ -157,7 +163,7 @@ export default {
         position: absolute;
         top: 50%; 
         right: 5px; 
-        transform: translateY(-30%) translateX(30px);
+        transform: translateY(-50%) translateX(30px);
         background: none;
         border: none;
         cursor: pointer;
@@ -175,7 +181,7 @@ export default {
     }
     .input-login:active, .input-login:focus{
         outline: none;
-        background-color: #678d9d;
+        background-color: #123d87;
         color: #ffffff;
     }
     .buttons-login {
@@ -198,7 +204,7 @@ export default {
     }
     .button-login:hover{
         background-color: #ffffff;
-        color: #00506c;
+        color: #00215a;
         cursor: pointer;
     }
     .button-login:active{
