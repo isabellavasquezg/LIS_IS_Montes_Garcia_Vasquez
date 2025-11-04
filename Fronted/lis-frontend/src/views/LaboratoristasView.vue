@@ -59,7 +59,6 @@ export default {
             this.laboratorista
           );
           alert("Laboratorista actualizado correctamente");
-          // close edit modal if open
           this.mostrarEditarModal = false;
         } else {
           await axios.post("http://127.0.0.1:8000/laboratoristas/", this.laboratorista);
@@ -86,7 +85,7 @@ export default {
         const res = await axios.get(`http://127.0.0.1:8000/laboratoristas/${this.sidebarCodigo}`);
         this.laboratorista = { ...res.data };
         this.modoEdicion = true;
-        this.mostrarEditarModal = true; // open edit modal
+        this.mostrarEditarModal = true;
         this.sidebarMode = '';
         this.sidebarCodigo = '';
       } catch (err) {
@@ -166,7 +165,8 @@ export default {
   <div class="backgroundhome-container">
     <div class="sidebar-container">
       <div class="imagen-logo-menu"></div>
-      <h4 class="usuario-name-menu">Laboratoristas</h4>
+
+  <h4 class="usuario-name-menu">Bienvenido Ing. KEVIN</h4>
 
       <ul class="menu-opciones-contenedor" style="width:100%; padding-left:12px">
         <li class="menu-opcion" @click="selectEditar">Modificar</li>
@@ -186,22 +186,18 @@ export default {
 
       <div class="sidebar-bottom">
         <button class="icon-btn" @click="$router.push('/Home')" title="Ir al menú">
-          <!-- home icon -->
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="#fff"/></svg>
         </button>
-        <button class="icon-btn" @click="$router.push('/Login')" title="Salir">
-          <!-- exit icon -->
+  <button class="icon-btn" @click="$router.push('/')" title="Salir">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 13v-2H7V8l-5 4 5 4v-3zM20 3h-8v2h8v14h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" fill="#fff"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Main content: colocada en el grid central como Homeview -->
     <div class="main-area" >
       <div class="laboratoristas-container">
         <h2 class="titulo-menu">Gestión de Laboratoristas</h2>
 
-        <!-- centered bubble search under title -->
         <div class="buscador-central">
           <div class="buscador-bubble">
             <input v-model="codigoBusqueda" placeholder="Buscar por código interno" type="text" />
@@ -238,7 +234,6 @@ export default {
         <div v-if="mostrarModal" class="modal-overlay">
           <div class="modal">
             <div style="display:flex;gap:12px;align-items:center">
-              <!-- danger icon (inline svg) -->
               <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 21h22L12 2 1 21z" fill="#fff"/><path d="M13 16h-2v2h2v-2zm0-8h-2v6h2V8z" fill="#d32f2f"/></svg>
               <div>
                 <p style="font-weight:700;margin:0 0 6px 0">Confirmar eliminación</p>
@@ -268,7 +263,6 @@ export default {
           </div>
         </div>
         
-        <!-- Modal de edición -->
         <div v-if="mostrarEditarModal" class="modal-overlay">
           <div class="modal" style="max-width:520px;width:90%">
             <h3 style="margin-top:0">Editar laboratorista</h3>
@@ -377,7 +371,6 @@ export default {
   .icon-btn{ background:transparent; border:none; cursor:pointer; padding:6px }
   .icon-btn svg{ display:block }
 
-  /* central bubble search */
   .buscador-central{ display:flex; justify-content:center; margin-bottom:18px }
   .buscador-bubble{ display:flex; align-items:center; gap:8px; background:#fff; padding:8px 12px; border-radius:999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
   .buscador-bubble input{ border:none; outline:none; padding:8px; width:260px; font-family:sans-serif }
@@ -390,7 +383,6 @@ export default {
   .grid-form{ display:grid; grid-template-columns: repeat(2,1fr); gap:10px }
   .grid-form input{ padding:8px; border-radius:6px; border:1px solid #ddd }
 
-  /* Table styles copied/adapted from Homeview */
   .tabla-contenedor-scroll{ scrollbar-color: #00215a #f1f1f1; scrollbar-width: thin; max-height: 600px; overflow-y: auto }
   .tabla-menu-sujetos{ border-collapse: separate; border-spacing: 0 12px; width: 100%; font-family: sans-serif; font-size: 16px }
   .tabla-menu-sujetos thead th{ background-color: #f0f6fb; color: #0b5fa5; padding: 14px 12px; text-align: center; border: none; font-weight:700; letter-spacing:0.6px }
@@ -401,7 +393,6 @@ export default {
   .tabla-menu-sujetos tbody tr td:first-child{ border-top-left-radius: 10px; border-bottom-left-radius: 10px }
   .tabla-menu-sujetos tbody tr td:last-child{ border-top-right-radius: 10px; border-bottom-right-radius: 10px }
 
-  /* Modal */
   .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); display:flex; justify-content:center; align-items:center }
   .modal{ background:white; padding: 20px; border-radius: 10px }
 
