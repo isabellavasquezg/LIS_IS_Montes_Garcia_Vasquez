@@ -13,7 +13,12 @@ const router=createRouter({
             name:'Home',
             component:()=>import('../views/Homeview.vue'),
             props: true
+        },
+        {
+            path: '/laboratoristas',
+            name: 'Laboratoristas',
+            component: () => import('../views/LaboratoristasView.vue')
         }
-    ]
+  ]
 });
 export default router;
