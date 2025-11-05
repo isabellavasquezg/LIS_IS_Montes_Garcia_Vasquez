@@ -8,6 +8,8 @@ export default {
       idBusqueda: "",
       resultados: [],
       mostrarCrearModal: false,
+      mostrarDetalleModal: false,
+      resultadoDetalle: null,
       newResultado: {
         codigo_ingreso: "",
         codigo_interno: "",
@@ -22,8 +24,20 @@ export default {
     async listarResultados() {
       try {
         const res = await axios.get("http://127.0.0.1:8000/resultados/");
-        // backend responde { resultados: [...] }
-        this.resultados = res.data.resultados || [];
+        // res.data.resultados: [{..., paciente__codigo_ingreso, paciente__documento, paciente__nombre, paciente__apellidos, ...}]
+        // Si el backend no retorna esos campos, hay que ajustarlo. Aquí asumo que sí.
+        this.resultados = (res.data.resultados || []).map(r => ({
+          id: r.id,
+          paciente__codigo_ingreso: r.paciente__codigo_ingreso || r.paciente,
+          paciente__documento: r.paciente__documento || '',
+          paciente__nombre: r.paciente__nombre || '',
+          paciente__apellidos: r.paciente__apellidos || '',
+          laboratorista__codigo_interno: r.laboratorista__codigo_interno || r.laboratorista,
+          colesterol_total: r.colesterol_total,
+          colesterol_hdl: r.colesterol_hdl,
+          colesterol_ldl: r.colesterol_ldl,
+          trigliceridos: r.trigliceridos
+        }));
       } catch (err) {
         console.error(err);
         alert("Error al listar resultados");
@@ -35,17 +49,19 @@ export default {
         const res = await axios.get(
           `http://127.0.0.1:8000/resultados/${this.idBusqueda}`
         );
-        // convertir a formato de tabla similar al listado
         const r = res.data;
         this.resultados = [
           {
             id: r.id,
-            paciente__codigo_ingreso: r.paciente,
-            laboratorista__codigo_interno: r.laboratorista,
+            paciente__codigo_ingreso: r.paciente__codigo_ingreso || r.paciente,
+            paciente__documento: r.paciente__documento || '',
+            paciente__nombre: r.paciente__nombre || '',
+            paciente__apellidos: r.paciente__apellidos || '',
+            laboratorista__codigo_interno: r.laboratorista__codigo_interno || r.laboratorista,
             colesterol_total: r.colesterol_total,
             colesterol_hdl: r.colesterol_hdl,
             colesterol_ldl: r.colesterol_ldl,
-            trigliceridos: r.trigliceridos,
+            trigliceridos: r.trigliceridos
           },
         ];
       } catch (err) {
@@ -53,6 +69,15 @@ export default {
         alert("Resultado no encontrado");
         this.resultados = [];
       }
+    },
+
+    verDetalle(resultado) {
+      this.resultadoDetalle = resultado;
+      this.mostrarDetalleModal = true;
+    },
+    cerrarDetalle() {
+      this.mostrarDetalleModal = false;
+      this.resultadoDetalle = null;
     },
     mostrarCrear() {
       this.mostrarCrearModal = true;
@@ -67,7 +92,6 @@ export default {
     },
     async guardarNuevoResultado() {
       try {
-        // convertir valores numéricos
         const payload = {
           codigo_ingreso: this.newResultado.codigo_ingreso,
           codigo_interno: this.newResultado.codigo_interno,
@@ -89,6 +113,10 @@ export default {
         }
       }
     },
+    irHome() {
+      const nombreUsuario = this.$route.query.nombreUsuario || 'KEVIN';
+      this.$router.push({ path: '/Home', query: { nombreUsuario } });
+    }
   },
   mounted() {
     this.listarResultados();
@@ -104,17 +132,11 @@ export default {
       <h4 class="usuario-name-menu">Bienvenido Ing. KEVIN</h4>
 
       <ul class="menu-opciones-contenedor" style="width:100%; padding-left:12px">
-        <li class="menu-opcion" @click="() => {}">Consultar</li>
-        <div class="sidebar-panel" style="background:transparent;padding-left:12px">
-          <input v-model="idBusqueda" placeholder="ID de resultado" />
-          <button class="button-primario" @click="buscarResultado">Buscar</button>
-        </div>
-
         <li class="menu-opcion" @click="mostrarCrear">Ingresar resultado</li>
       </ul>
 
       <div class="sidebar-bottom">
-        <button class="icon-btn" @click="$router.push('/Home')" title="Ir al menú">
+  <button class="icon-btn" @click="irHome" title="Ir al menú">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="#fff"/></svg>
         </button>
         <button class="icon-btn" @click="$router.push('/')" title="Salir">
@@ -140,30 +162,46 @@ export default {
           <table class="tabla-menu-sujetos">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Paciente</th>
-                <th>Laboratorista</th>
-                <th>Colesterol total</th>
-                <th>HDL</th>
-                <th>LDL</th>
-                <th>Triglicéridos</th>
+                <th>Documento</th>
+                <th>Código de ingreso</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
               <tr v-if="resultados.length === 0">
-                <td colspan="7" style="text-align:center;padding:28px;color:#666">No hay resultados registrados</td>
+                <td colspan="5" style="text-align:center;padding:28px;color:#666">No hay resultados registrados</td>
               </tr>
               <tr v-for="r in resultados" :key="r.id">
-                <td>{{ r.id }}</td>
+                <td>{{ r.paciente__documento }}</td>
                 <td>{{ r.paciente__codigo_ingreso }}</td>
-                <td>{{ r.laboratorista__codigo_interno }}</td>
-                <td>{{ r.colesterol_total }}</td>
-                <td>{{ r.colesterol_hdl }}</td>
-                <td>{{ r.colesterol_ldl }}</td>
-                <td>{{ r.trigliceridos }}</td>
+                <td>{{ r.paciente__nombre }}</td>
+                <td>{{ r.paciente__apellidos }}</td>
+                <td>
+                  <button class="button-primario" @click="verDetalle(r)">Ver más</button>
+                </td>
               </tr>
             </tbody>
           </table>
+        </div>
+        <div v-if="mostrarDetalleModal && resultadoDetalle" class="modal-overlay">
+          <div class="modal" style="max-width:520px;width:90%">
+            <h3 style="margin-top:0">Detalle del resultado</h3>
+            <div style="margin-top:10px">
+              <p><b>Documento:</b> {{ resultadoDetalle.paciente__documento }}</p>
+              <p><b>Código de ingreso:</b> {{ resultadoDetalle.paciente__codigo_ingreso }}</p>
+              <p><b>Nombre:</b> {{ resultadoDetalle.paciente__nombre }} {{ resultadoDetalle.paciente__apellidos }}</p>
+              <p><b>Laboratorista:</b> {{ resultadoDetalle.laboratorista__codigo_interno }}</p>
+              <p><b>Colesterol total:</b> {{ resultadoDetalle.colesterol_total }}</p>
+              <p><b>Colesterol HDL:</b> {{ resultadoDetalle.colesterol_hdl }}</p>
+              <p><b>Colesterol LDL:</b> {{ resultadoDetalle.colesterol_ldl }}</p>
+              <p><b>Triglicéridos:</b> {{ resultadoDetalle.trigliceridos }}</p>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:14px;justify-content:flex-end">
+              <button class="button-secundario" @click="cerrarDetalle">Cerrar</button>
+            </div>
+          </div>
         </div>
 
         <div v-if="mostrarCrearModal" class="modal-overlay">
@@ -181,6 +219,7 @@ export default {
               <button class="button-secundario" @click="mostrarCrearModal=false">Cancelar</button>
               <button class="button-primario" @click="guardarNuevoResultado">Crear</button>
             </div>
+
           </div>
         </div>
       </div>
@@ -189,7 +228,6 @@ export default {
 </template>
 
 <style scoped>
-/* Reuse the same layout & styles as LaboratoristasView for consistent UI */
 .backgroundhome-container{ background-color: #f5f5f5; width: 100vw; min-height: 100vh; display:grid; grid-template-columns: repeat(12,1fr); grid-template-rows: 25px repeat(15,1fr); box-sizing: border-box; padding: 0; margin: 0; }
 .sidebar-container{ background-color: #00215a; grid-column-start: 1; grid-column-end: 3; grid-row-start: 2; grid-row-end: 17; border-radius: 0 30px 0 0; display: flex; flex-direction: column; align-items: center; padding-bottom: 40px; }
 .imagen-logo-menu{ margin-top: 40px; height: 100px; width: 120px; background-image: url("../../public/images/logo_menu.png"); background-size: cover; }

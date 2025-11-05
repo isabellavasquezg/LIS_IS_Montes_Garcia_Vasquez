@@ -1,21 +1,19 @@
 <script>
 export default {
-		data() {
+			data() {
 				return {
-						nombreUsuario: null 
+					nombreUsuario: ''
 				};
-		},
-		mounted(){
-				const nombreCompleto = this.$route.query.user; 
-        
-				let nombreRecortado = null;
-
-				if (nombreCompleto) {
-						const partes = nombreCompleto.split('.'); 
-						nombreRecortado = partes[0]; 
+			},
+			mounted() {
+				// Leer desde query param
+				let nombre = this.$route.query.nombreUsuario;
+				// Si no existe, usar respaldo (localStorage, o valor por defecto)
+				if (!nombre) {
+					nombre = localStorage.getItem('nombreUsuario') || 'KEVIN';
 				}
-				this.nombreUsuario = nombreRecortado ? nombreRecortado.toUpperCase() : '';
-		}
+				this.nombreUsuario = nombre.toUpperCase();
+			}
 }
 </script>
 

@@ -154,6 +154,10 @@ export default {
       };
       this.modoEdicion = false;
     },
+    irHome() {
+      const nombreUsuario = this.$route.query.nombreUsuario || 'KEVIN';
+      this.$router.push({ path: '/Home', query: { nombreUsuario } });
+    }
   },
   mounted() {
     this.listarLaboratoristas();
@@ -185,7 +189,7 @@ export default {
       </ul>
 
       <div class="sidebar-bottom">
-        <button class="icon-btn" @click="$router.push('/Home')" title="Ir al menú">
+  <button class="icon-btn" @click="irHome" title="Ir al menú">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="#fff"/></svg>
         </button>
   <button class="icon-btn" @click="$router.push('/')" title="Salir">

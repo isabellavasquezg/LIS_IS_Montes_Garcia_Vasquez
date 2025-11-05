@@ -24,6 +24,11 @@ const router=createRouter({
             path: '/resultados',
             name: 'Resultados',
             component: () => import('../views/ResultadosView.vue')
+        },
+        {
+            path: '/pacientes',
+            name: 'Pacientes',
+            component: () => import('../views/PacientesView.vue')
         }
   ]
 });
