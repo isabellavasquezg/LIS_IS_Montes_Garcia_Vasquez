@@ -29,18 +29,22 @@ class ResultadosView(View):
             except Resultado.DoesNotExist:
                 return JsonResponse({"error": "Resultado no encontrado"}, status=404)
         else:
-            resultados = list(
-                Resultado.objects.values(
-                    "id",
-                    "paciente__codigo_ingreso",
-                    "laboratorista__codigo_interno",
-                    "colesterol_total",
-                    "colesterol_hdl",
-                    "colesterol_ldl",
-                    "trigliceridos"
-                )
-            )
-            return JsonResponse({"resultados": resultados}, status=200)
+            resultados = Resultado.objects.select_related('paciente', 'laboratorista').all()
+            data = []
+            for r in resultados:
+                data.append({
+                    "id": r.id,
+                    "paciente__codigo_ingreso": r.paciente.codigo_ingreso if r.paciente else "",
+                    "paciente__documento": r.paciente.documento if r.paciente else "",
+                    "paciente__nombre": r.paciente.nombre if r.paciente else "",
+                    "paciente__apellidos": r.paciente.apellidos if r.paciente else "",
+                    "laboratorista__codigo_interno": r.laboratorista.codigo_interno if r.laboratorista else "",
+                    "colesterol_total": r.colesterol_total,
+                    "colesterol_hdl": r.colesterol_hdl,
+                    "colesterol_ldl": r.colesterol_ldl,
+                    "trigliceridos": r.trigliceridos
+                })
+            return JsonResponse({"resultados": data}, status=200)
 
     def post(self, request):
         try:
