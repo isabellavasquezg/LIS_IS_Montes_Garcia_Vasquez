@@ -2,17 +2,11 @@
 export default {
 			data() {
 				return {
-					nombreUsuario: ''
+					nombreUsuario:null,
 				};
 			},
 			mounted() {
-				// Leer desde query param
-				let nombre = this.$route.query.nombreUsuario;
-				// Si no existe, usar respaldo (localStorage, o valor por defecto)
-				if (!nombre) {
-					nombre = localStorage.getItem('nombreUsuario') || 'KEVIN';
-				}
-				this.nombreUsuario = nombre.toUpperCase();
+				this.nombreUsuario = this.$route.query.user;
 			}
 }
 </script>
@@ -23,9 +17,9 @@ export default {
 			<div class="imagen-logo-menu"></div>
 
 			<ul class="menu-opciones-contenedor">
-				<li class="menu-opcion" @click="$router.push('/laboratoristas')">Laboratoristas</li>
-				<li class="menu-opcion" @click="$router.push('/pacientes')">Pacientes</li>
-				<li class="menu-opcion" @click="$router.push('/resultados')">Resultados</li>
+				<li class="menu-opcion" @click="$router.push({path:'/laboratoristas',query:{user:nombreUsuario}})">Laboratoristas</li>
+				<li class="menu-opcion" @click="$router.push({path:'/pacientes',query:{user:nombreUsuario}})">Pacientes</li>
+				<li class="menu-opcion" @click="$router.push({path:'/resultados',query:{user:nombreUsuario}})">Resultados</li>
 			</ul>
 
 			<div class="sidebar-bottom">

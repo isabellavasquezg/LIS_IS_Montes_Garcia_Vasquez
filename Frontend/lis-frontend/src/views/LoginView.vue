@@ -28,11 +28,11 @@ export default {
                 axios.post('http://127.0.0.1:8000/usuarios/', credentials)
                 .then(response => {
                     const valornombre=this.username;
-                    console.log(valornombre)
-                    const data = response.data; 
+                    let nombrepartes=valornombre.split('.');
+                    let nombreUsuario=nombrepartes[0].toUpperCase();
                     this.$router.push({ 
                         path: '/Home', 
-                        query: { user: valornombre }
+                        query: { user: nombreUsuario }
                     });
                     this.password = '';
                     this.username = '';

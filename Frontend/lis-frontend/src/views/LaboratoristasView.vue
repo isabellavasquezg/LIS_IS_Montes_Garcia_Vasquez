@@ -1,10 +1,12 @@
 <script>
+import router from "@/router";
 import axios from "axios";
 
 export default {
   name: "LaboratoristasView",
   data() {
     return {
+      nombreUsuario:null,
       codigoBusqueda: "",
       laboratoristas: [],
       laboratorista: {
@@ -161,6 +163,7 @@ export default {
   },
   mounted() {
     this.listarLaboratoristas();
+    this.nombreUsuario=this.$route.query.user;
   },
 };
 </script>
@@ -170,7 +173,7 @@ export default {
     <div class="sidebar-container">
       <div class="imagen-logo-menu"></div>
 
-  <h4 class="usuario-name-menu">Bienvenido Ing. KEVIN</h4>
+  <h4 class="usuario-name-menu">Bienvenido Ing. {{ nombreUsuario }}</h4>
 
       <ul class="menu-opciones-contenedor" style="width:100%; padding-left:12px">
         <li class="menu-opcion" @click="selectEditar">Modificar</li>
@@ -189,10 +192,10 @@ export default {
       </ul>
 
       <div class="sidebar-bottom">
-  <button class="icon-btn" @click="irHome" title="Ir al menú">
+        <button class="icon-btn" @click="$router.push({path:'/Home',query:{user:nombreUsuario}})" title="Ir al menú">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="#fff"/></svg>
         </button>
-  <button class="icon-btn" @click="$router.push('/')" title="Salir">
+        <button class="icon-btn" @click="$router.push('/')" title="Salir">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 13v-2H7V8l-5 4 5 4v-3zM20 3h-8v2h8v14h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" fill="#fff"/></svg>
         </button>
       </div>

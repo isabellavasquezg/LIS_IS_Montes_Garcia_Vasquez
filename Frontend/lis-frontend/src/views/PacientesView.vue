@@ -5,6 +5,7 @@ export default {
   name: "PacientesView",
   data() {
     return {
+      nombreUsuario:null,
       pacientes: [],
       mostrarCrearModal: false,
       mostrarEditarModal: false,
@@ -124,6 +125,7 @@ export default {
   },
   mounted() {
     this.listarPacientes();
+    this.nombreUsuario=this.$route.query.user;
   },
 };
 </script>
@@ -133,7 +135,7 @@ export default {
     <div class="sidebar-container">
       <div class="imagen-logo-menu"></div>
 
-      <h4 class="usuario-name-menu">Bienvenido Ing. KEVIN</h4>
+      <h4 class="usuario-name-menu">Bienvenido Ing. {{ nombreUsuario }}</h4>
 
       <ul class="menu-opciones-contenedor" style="width:100%; padding-left:12px">
         <li class="menu-opcion" @click="mostrarCrear">Crear</li>
@@ -150,7 +152,7 @@ export default {
       </ul>
 
       <div class="sidebar-bottom">
-        <button class="icon-btn" @click="irHome" title="Ir al menú">
+        <button class="icon-btn" @click="$router.push({path:'/Home',query:{user:nombreUsuario}})" title="Ir al menú">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="#fff"/></svg>
         </button>
         <button class="icon-btn" @click="$router.push('/')" title="Salir">
