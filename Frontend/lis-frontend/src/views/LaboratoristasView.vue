@@ -390,7 +390,7 @@ export default {
   .grid-form{ display:grid; grid-template-columns: repeat(2,1fr); gap:10px }
   .grid-form input{ padding:8px; border-radius:6px; border:1px solid #ddd }
 
-  .tabla-contenedor-scroll{ scrollbar-color: #00215a #f1f1f1; scrollbar-width: thin; max-height: 600px; overflow-y: auto }
+  .tabla-contenedor-scroll{ scrollbar-color: #002565 #f1f1f1; scrollbar-width: thin; max-height: 600px; overflow-y: auto }
   .tabla-menu-sujetos{ border-collapse: separate; border-spacing: 0 12px; width: 100%; font-family: sans-serif; font-size: 16px }
   .tabla-menu-sujetos thead th{ background-color: #f0f6fb; color: #0b5fa5; padding: 14px 12px; text-align: center; border: none; font-weight:700; letter-spacing:0.6px }
   .tabla-menu-sujetos tbody tr{ display: table-row; box-shadow: 0 2px 6px rgba(11,95,165,0.04); background-color: white; border-radius: 10px; overflow: hidden; height: 64px; transition: transform .12s ease, box-shadow .12s ease }
@@ -403,6 +403,6 @@ export default {
   .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); display:flex; justify-content:center; align-items:center }
   .modal{ background:white; padding: 20px; border-radius: 10px }
 
-  .button-confirm{ background:#2e7d32; color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer }
+  .button-confirm{ background:#2e7d32; color:#ffffff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer }
 
 </style>
